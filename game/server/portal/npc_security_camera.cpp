@@ -1126,16 +1126,16 @@ void PlayDismountSounds()
 	{
 		gameeventmanager->FireEvent( event );
 	}
-	
+
+	pPlayer->IncNumCamerasDetatched();
+	int iNumCamerasDetatched = pPlayer->GetNumCamerasDetatched();
+
 	// If glados is currently talking, don't let her talk over herself or interrupt a potentially important speech.
 	// Should we play the dismount sound after she's done? or is that too disjointed from the camera dismounting act to make sense...
 	if ( IsRunningScriptedScene( pGlaDOS, false ) )
 	{
 		return;
 	}
-
-	pPlayer->IncNumCamerasDetatched();
-	int iNumCamerasDetatched = pPlayer->GetNumCamerasDetatched();
 
 	// If they've knocked down every one possible, play special '1' sound.
 	if ( iNumCamerasDetatched == SECURITY_CAMERA_TOTAL_TO_KNOCK_DOWN )
